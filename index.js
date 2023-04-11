@@ -25,24 +25,24 @@ app.post("/", async (req, res) => {
     }
 })
 
-const connectDB = async () => {
-    try {
-        const conn = await mongoose.connect(process.env.MONGO_URI,
-            {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
-            }
-        );
-        console.log(`MongoDB Connected: ${conn.connection.host}`)
-    } catch (error) {
-        console.log(error)
-        process.exit(1)
-    }
-}
-//Connect to the database before listening
-connectDB().then(() => {
-    app.listen(process.env.PORT, () => {
-        console.log("listening for requests")
-    })
-})
-
+// const connectDB = async () => {
+//     try {
+//         const conn = await mongoose.connect(`${process.env.MONGO_URI}`,
+//             {
+//                 useNewUrlParser: true,
+//                 useUnifiedTopology: true
+//             }
+//         );
+//         console.log(`MongoDB Connected: ${conn.connection.host}`)
+//     } catch (error) {
+//         console.log(error)
+//         process.exit(1)
+//     }
+// }
+// //Connect to the database before listening
+// connectDB().then(() => {
+//     app.listen(process.env.PORT, () => {
+//         console.log("listening for requests")
+//     })
+// })
+app.listen(3000)
