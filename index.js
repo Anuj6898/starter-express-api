@@ -16,13 +16,13 @@ app.get("/", async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-        console.log("Get Request") 
+    console.log("Get Request")
 
 })
 app.post("/", async (req, res) => {
-    
-    const existingUser = await User.findOne({boatId:req.body.boatId})
-    if(existingUser === null){
+
+    const existingUser = await User.findOne({ boatId: req.body.boatId })
+    if (existingUser === null) {
         const user = new User(req.body)
         try {
             await user.save()
@@ -33,20 +33,20 @@ app.post("/", async (req, res) => {
             console.log("Data Posted")
         }
     }
-    else{
+    else {
 
-        const updatedUser = await User.updateOne({boatId: req.body.boatId},req.body)
-        try{
+        const updatedUser = await User.updateOne({ boatId: req.body.boatId }, req.body)
+        try {
             await updatedUser.save()
             res.send(updatedUser)
-        }catch (error){
+        } catch (error) {
             res.status(500).send(error)
-        }finally{
+        } finally {
             console.log("Updated")
         }
-        
+
     }
-    
+
 })
 
 const mongoURI = "mongodb+srv://Anuj:Centenario@cluster0.55qy4.mongodb.net/ships?retryWrites=true&w=majority"
