@@ -16,8 +16,7 @@ app.get("/", async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-        console.log("Get Request")
-        res.send("Hello, Server is Online!")
+        console.log("Get Request") 
 
 })
 app.post("/", async (req, res) => {
